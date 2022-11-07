@@ -16,12 +16,16 @@ function initLiffSDK() {
         //若未登入則先登入
         console.log("登入line");
         liff.login();
+        document
+          .getElementById("btnShare")
+          .addEventListener("click", sendShare);
       } else {
         //若已經登入則直接開始使用LIFF API
         console.log("Start LIFF API");
+        document
+          .getElementById("btnShare")
+          .addEventListener("click", sendShare);
       }
-      //顯示分享按鈕
-      document.getElementById("btnShare").style.display = "block";
     })
     .catch(function (error) {
       console.log(error);
