@@ -18,21 +18,6 @@ function initLiffSDK() {
       } else {
         //開始使用LIFF API
         console.log("Start LIFF API");
-        //若已經登入LINE且LINE版本支持ShareTargetPicker
-        if (liff.isApiAvailable("shareTargetPicker")) {
-          console.log("ShareMyMessage");
-          liff
-            .shareTargetPicker([
-              {
-                type: "text",
-                text: "message",
-              },
-            ])
-            .then((res) => window.alert(res.status))
-            .catch((error) => window.alert(error));
-        } else {
-          console.log("Fail to ShareMyMessage");
-        }
       }
     })
     .catch(function (error) {
@@ -40,6 +25,26 @@ function initLiffSDK() {
     });
 }
 
+initLiffSDK();
+
+function sendShareData() {
+  //若已經登入LINE且LINE版本支持ShareTargetPicker
+  if (liff.isApiAvailable("shareTargetPicker")) {
+    console.log("ShareMyMessage");
+    liff
+      .shareTargetPicker([
+        {
+          type: "text",
+          text: "message",
+        },
+      ])
+      .then((res) => window.alert(res.status))
+      .catch((error) => window.alert(error));
+  } else {
+    console.log("Fail to ShareMyMessage");
+  }
+}
+
 document
   .getElementById("sendShareTarget")
-  .addEventListener("click", initLiffSDK);
+  .addEventListener("click", sendShareData);
