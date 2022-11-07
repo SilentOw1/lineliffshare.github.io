@@ -6,7 +6,7 @@ function initLiffSDK() {
   liff
     .init({
       liffId: liffID,
-      // withLoginOnExternalBrowser: true,
+      withLoginOnExternalBrowser: true,
     })
     .then(function () {
       console.log("LIFF init");
@@ -20,13 +20,15 @@ function initLiffSDK() {
         //若已經登入則直接開始使用LIFF API
         console.log("Start LIFF API");
       }
+      //顯示分享按鈕
+      document.getElementById("btnShare").style.display = "block";
     })
     .catch(function (error) {
       console.log(error);
     });
 }
 
-function sendShareData() {
+function sendShare() {
   //若已經登入LINE且LINE版本支持ShareTargetPicker
   if (liff.isApiAvailable("shareTargetPicker")) {
     console.log("ShareMyMessage");
@@ -43,9 +45,5 @@ function sendShareData() {
     console.log("Fail to ShareMyMessage");
   }
 }
-
-document
-  .getElementById("sendShareTarget")
-  .addEventListener("click", sendShareData);
 
 initLiffSDK();
