@@ -8,7 +8,7 @@ function sendShare() {
       .shareTargetPicker([
         {
           type: "text",
-          text: "message",
+          text: "message"
         },
       ])
       .then((res) => window.alert(res.status))
