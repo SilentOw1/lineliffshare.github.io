@@ -1,5 +1,23 @@
 "use strict";
 
+function sendShare() {
+  //若已經登入LINE且LINE版本支持ShareTargetPicker
+  if (liff.isApiAvailable("shareTargetPicker")) {
+    console.log("ShareMyMessage");
+    liff
+      .shareTargetPicker([
+        {
+          type: "text",
+          text: "message",
+        },
+      ])
+      .then((res) => window.alert(res.status))
+      .catch((error) => window.alert(error));
+  } else {
+    console.log("Fail to ShareMyMessage");
+  }
+}
+
 function initLiffSDK() {
   //啟用Liff-----------------
   var liffID = "1657612795-jyOnda3y";
@@ -30,24 +48,6 @@ function initLiffSDK() {
     .catch(function (error) {
       console.log(error);
     });
-}
-
-function sendShare() {
-  //若已經登入LINE且LINE版本支持ShareTargetPicker
-  if (liff.isApiAvailable("shareTargetPicker")) {
-    console.log("ShareMyMessage");
-    liff
-      .shareTargetPicker([
-        {
-          type: "text",
-          text: "message",
-        },
-      ])
-      .then((res) => window.alert(res.status))
-      .catch((error) => window.alert(error));
-  } else {
-    console.log("Fail to ShareMyMessage");
-  }
 }
 
 initLiffSDK();
