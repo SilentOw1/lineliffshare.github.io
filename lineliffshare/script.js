@@ -8,7 +8,7 @@ function sendShare() {
       .shareTargetPicker([
         {
           type: "text",
-          text: "message"
+          text: "message",
         },
       ])
       .then((res) => window.alert(res.status))
@@ -24,7 +24,7 @@ function initLiffSDK() {
   liff
     .init({
       liffId: liffID,
-      //withLoginOnExternalBrowser: true,
+      // withLoginOnExternalBrowser: true,
     })
     .then(function () {
       console.log("LIFF init");
